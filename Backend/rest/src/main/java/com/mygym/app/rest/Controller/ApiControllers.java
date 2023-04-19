@@ -1,8 +1,8 @@
 package com.mygym.app.rest.Controller;
 
-import com.mygym.app.rest.Models.Login;
-import com.mygym.app.rest.Models.Token;
-import com.mygym.app.rest.Models.User;
+import com.mygym.app.rest.Models.*;
+import com.mygym.app.rest.Models.Lesson;
+import com.mygym.app.rest.Repo.LessonRepo;
 import com.mygym.app.rest.Repo.TokenRepo;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -21,6 +21,8 @@ public class ApiControllers {
     private UserRepo userRepo;
     @Autowired
     private TokenRepo tokenRepo;
+    @Autowired
+    private LessonRepo lessonRepo;
     @GetMapping(value = "/")
     public String getPage(){
         return "MyGym!";
@@ -75,7 +77,19 @@ public class ApiControllers {
     }
 
     @GetMapping(value = "/getUsers")
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userRepo.findAll();
+    }
+
+    @PostMapping("/class/schedule")
+    public ResponseEntity<String> scheduleClass(@RequestParam String token, @RequestBody Lesson lesson) {
+
+        ResponseEntity<String> response = verifyToken(token);
+        if (response.getStatusCode() != HttpStatus.OK) {
+            return response;
+        }
+
+        lessonRepo.save(lesson);
+        return ResponseEntity.ok("Class created successfully");
     }
 }
