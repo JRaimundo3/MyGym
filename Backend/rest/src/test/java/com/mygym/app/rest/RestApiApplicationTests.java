@@ -1,10 +1,10 @@
-package com.myGym.app.MyGym;
+package com.mygym.app.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestApplicationTests {
+class RestApiApplicationTests {
 
 	@Test
 	void contextLoads() {

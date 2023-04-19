@@ -1,13 +1,13 @@
-package com.myGym.app.MyGym;
+package com.mygym.app.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestApplication {
+public class RestApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestApplication.class, args);
+		SpringApplication.run(RestApiApplication.class, args);
 	}
 
 }
