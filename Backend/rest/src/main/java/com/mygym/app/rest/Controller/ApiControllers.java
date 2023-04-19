@@ -2,6 +2,8 @@ package com.mygym.app.rest.Controller;
 
 import com.mygym.app.rest.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +24,14 @@ public class ApiControllers {
     }
 
     @PostMapping(value = "/register")
-    public String doRegister(@RequestBody User user){
-        userRepo.save(user);
-        return "User saved with Success";
+    public ResponseEntity<String> doRegister(@RequestBody User user) {
+        String userEmail = user.getEmail();
+        if (userEmail != null && userRepo.findByEmail(userEmail).isEmpty()) {
+            userRepo.save(user);
+            return ResponseEntity.ok("User with email " + userEmail + " successfully registered");
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error registering user with email " + userEmail);
+        }
     }
+
 }

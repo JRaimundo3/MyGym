@@ -3,6 +3,9 @@ package com.mygym.app.rest.Models;
 import jakarta.persistence.*;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.validation.constraints.Email;
+
+
 @Entity
 public class User {
     @Id
@@ -18,6 +21,8 @@ public class User {
     @Column
     private String gym;
 
+
+    @Email(message = "E-mail inválido")
     @Column
     private String email;
 
