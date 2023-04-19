@@ -13,6 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 import com.mygym.app.rest.Repo.UserRepo;
 @RestController
@@ -92,4 +95,17 @@ public class ApiControllers {
         lessonRepo.save(lesson);
         return ResponseEntity.ok("Class created successfully");
     }
+    @GetMapping("/class/list")
+    public ResponseEntity<?> getClasses(@RequestParam String token) {
+        ResponseEntity<String> tokenResponse = verifyToken(token);
+        if (tokenResponse.getStatusCode() != HttpStatus.OK) {
+            return tokenResponse;
+        }
+
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+        List<Lesson> upcomingLessons = lessonRepo.findAllUpcomingLessons(currentDate, currentTime);
+        return ResponseEntity.ok(upcomingLessons);
+    }
+
 }
