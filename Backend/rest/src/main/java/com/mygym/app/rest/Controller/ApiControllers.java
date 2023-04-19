@@ -11,10 +11,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.*;
 import com.mygym.app.rest.Repo.UserRepo;
 @RestController
@@ -48,8 +46,22 @@ public class ApiControllers {
                 return ResponseEntity.ok(token);
             }
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error authenticating user with email " + loginRequest.getEmail());
     }
+
+    @GetMapping("/verifyToken")
+    public ResponseEntity<String> verifyToken(@RequestParam String token) {
+        Optional<Token> optionalToken = tokenRepo.findByToken(token);
+
+        if (optionalToken.isPresent()) {
+            Token dbToken = optionalToken.get();
+            if (dbToken.getToken().equals(token) && dbToken.getCreatedAt().getTime() + 5 * 60 * 1000 >= System.currentTimeMillis()) {
+                return ResponseEntity.ok("Token is valid");
+            }
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid token");
+    }
+
 
     @PostMapping(value = "/register")
     public ResponseEntity<String> doRegister(@RequestBody User user) {
