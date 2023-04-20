@@ -4,6 +4,8 @@ import com.mygym.app.rest.Models.*;
 import com.mygym.app.rest.Models.Lesson;
 import com.mygym.app.rest.Repo.LessonRepo;
 import com.mygym.app.rest.Repo.TokenRepo;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -106,6 +108,24 @@ public class ApiControllers {
         LocalTime currentTime = LocalTime.now();
         List<Lesson> upcomingLessons = lessonRepo.findAllUpcomingLessons(currentDate, currentTime);
         return ResponseEntity.ok(upcomingLessons);
+    }
+
+    @GetMapping("/getUser")
+    public ResponseEntity<?>  getUser(@RequestParam String token) {
+        Optional<Token> optionalToken = tokenRepo.findByToken(token);
+
+        if (optionalToken.isPresent()) {
+            Token dbToken = optionalToken.get();
+            Optional<User> optionalUser = userRepo.findByEmail(dbToken.getEmail());
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                return ResponseEntity.ok(user);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with email " + dbToken.getEmail() + " not found");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Token not found");
+        }
     }
 
 }
