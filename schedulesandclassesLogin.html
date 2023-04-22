@@ -148,7 +148,33 @@
                     <input type="submit" value="Submit" class="btn header-btn">
                 
                     </form>
+                    <script>
+                        // Ouvinte de eventos para o formulário
+                        document.querySelector('form').addEventListener('submit', (event) => {
+                            event.preventDefault();
 
+                            // Cria um objeto com as informações da aula
+                            const newClass = {
+                                date: document.querySelector('#date').value,
+                                startingTime: document.querySelector('#startingtime').value,
+                                endingTime: document.querySelector('#endingtime').value,
+                                classType: document.querySelector('#classetype').value,
+                                classTutor: document.querySelector('#classetutor').value
+                            };
+
+                            // Obtém o array de aulas armazenado no localStorage
+                            const classes = JSON.parse(localStorage.getItem('classes')) || [];
+
+                            // Adiciona a nova aula ao array
+                            classes.push(newClass);
+
+                            // Armazena o array atualizado no localStorage
+                            localStorage.setItem('classes', JSON.stringify(classes));
+
+                            // Limpa o formulário
+                            document.querySelector('form').reset();
+                        });
+                    </script>
                     
 
 
