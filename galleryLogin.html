@@ -45,7 +45,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="indexLogin.html"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -54,20 +54,17 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="services.html">Services</a></li>
-                                            <li><a href="schedule.html">schedule</a></li>
-                                            <li><a href="gallery.html">gallery</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="indexLogin.html">Home</a></li>
+                                            <li><a href="servicesLogin.html">Services</a></li>
+                                            <li><a href="scheduleLogin.html">schedule</a></li>
+                                            <li><a href="galleryLogin.html">gallery</a></li>
+                                            <li><a href="contactLogin.html">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="from.html" class="btn header-btn">registration</a>
+                                    <a href="index.html" class="btn header-btn">logout</a>
                                 </div>
-                                <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="login.html" class="btn header-btn">login</a>
                                 </div>
                             </div>
                         </div>   
@@ -89,7 +86,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap hero-cap2 text-center pt-70">
-                                <h2>Welcome Back</h2>
+                                <h2>our gallery</h2>
                             </div>
                         </div>
                     </div>
@@ -97,97 +94,78 @@
             </div>
         </div>
         <!-- Hero End -->
-        <!--? Login form Start -->
-        <div class="contact-form-main mt-100 mb-100">
-            <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-xl-7 col-lg-7">
-                        <div class="form-wrapper">
-                            <!--Section Tittle  -->
-                            <div class="form-tittle">
-                                <div class="row ">
-                                    <div class="col-lg-11 col-md-10 col-sm-10">
-                                        <div class="section-tittle">
-                                            <span>Login form</span>
-                                            <h2>Feel Free to contact with us!</h2>
+        <!--? Gallery Area Start -->
+        <div class="gallery-area section-padding30">
+            <div class="container-fluid p-0 fix">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="box snake mb-30">
+                            <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/gallery1.png);"></div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <a href="galleryLogin.html"><i class="ti-arrow-top-right"></i></a>
+                                    <h3>Best fitness gallery</h3>
+                                    <p>Fitness, Body</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="box snake mb-30">
+                                    <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery2.png);"></div>
+                                    <div class="overlay">
+                                        <div class="overlay-content">
+                                            <a href="galleryLogin.html"><i class="ti-arrow-top-right"></i></a>
+                                            <h3>Best fitness gallery</h3>
+                                            <p>Fitness, Body</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--End Section Tittle  -->
-                            <form id="contact-form">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-box subject-icon mb-30">
-                                            <input type="Email" name="email" id = "email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-box subject-icon mb-30">
-                                            <input type="password" name="password" id = "password" placeholder="Password">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="submit-info">
-                                            <button class="btn" type="submit" id="login-btn">Login</button>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="box snake mb-30">
+                                    <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery3.png);"></div>
+                                    <div class="overlay">
+                                        <div class="overlay-content">
+                                            <a href="galleryLogin.html"><i class="ti-arrow-top-right"></i></a>
+                                            <h3>Best fitness gallery</h3>
+                                            <p>Fitness, Body</p>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="errorModalLabel">Erro no login!</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <p>Email ou password incorrectos.</p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="box snake mb-30">
+                                    <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery4.png);"></div>
+                                    <div class="overlay">
+                                        <div class="overlay-content">
+                                            <a href="galleryLogin.html"><i class="ti-arrow-top-right"></i></a>
+                                            <h3>Best fitness gallery</h3>
+                                            <p>Fitness, Body</p>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="box snake mb-30">
+                                    <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery5.png);"></div>
+                                    <div class="overlay">
+                                        <div class="overlay-content">
+                                            <a href="galleryLogin.html"><i class="ti-arrow-top-right"></i></a>
+                                            <h3>Best fitness gallery</h3>
+                                            <p>Fitness, Body</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> 
-                            <script>
-                                document.getElementById("login-btn").addEventListener("click", login);
-                            
-                                function login(event) {
-                                    event.preventDefault();
-                            
-                                    // Get references to the form elements
-                                    const emailInput = document.getElementById('email');
-                                    const passwordInput = document.getElementById('password');
-                            
-                                    // Get the form data
-                                    const email = emailInput.value;
-                                    const password = passwordInput.value;
-                            
-                                    // Get the stored user data
-                                    const registeredEmail = localStorage.getItem("email");
-                                    const registeredPass = localStorage.getItem("password");
-                            
-                                    // Check if the user exists and the password matches
-                                    if (registeredEmail === email && registeredPass === password) {
-                                        // Redirect to home page or dashboard
-                                        window.location.href = "indexlogin.html";
-                                    } else {
-                                        // Display an error message to the user
-                                        $('#errorModal').modal('show');
-                                    }
-                                }
-                            </script>
-                            
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- contact left Img-->
-            <div class="from-left d-none d-lg-block">
-                <img src="assets/img/gallery/contact_form.png" alt="" style="max-height: 500px;">
-            </div>
         </div>
-        <!-- Login form End -->
+        <!-- Gallery Area End -->
     </main>
     <footer>
         <!--? Footer Start-->
@@ -240,7 +218,7 @@
                             <div class="single-footer-caption mb-50">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                    <a href="indexLogin.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -305,6 +283,8 @@
     <script src="./assets/js/jquery.counterup.min.js"></script>
     <script src="./assets/js/waypoints.min.js"></script>
     <script src="./assets/js/jquery.countdown.min.js"></script>
+
+
     <script src="./assets/js/hover-direction-snake.min.js"></script>
 
     <!-- contact js -->
