@@ -129,42 +129,44 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="submit-info">
-                                            <input type="button" value="Save" onclick="Login()" >
+                                            <button class="btn" type="submit" id="login-btn">Login</button>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <script>
-
-                                function Login(){
-                                    
+                                document.getElementById("login-btn").addEventListener("click", login);
+                                
+                                function login(){
+                                    alert("login");
                                     // Get references to the form elements
                                     const emailInput = document.getElementById('email');
                                     const passwordInput = document.getElementById('password');
-                                    console.log(emailInput);
-                                    console.log(passwordInput);
-                                    const user = localStorage.getItem(emailInput);
-                                    const pass = localStorage.getItem(passwordInput);
-                                    
-                                // Get the form data
+                            
+                                    // Get the form data
                                     const email = emailInput.value;
                                     const password = passwordInput.value;
-                                
-                                
-                                
-                                    if (password != pass) {
-                                            console.log("Já existe esse email");
-                                            console.log("sucesso");
-                                            window.location.href = 'schedulesandclasses.html';
+                                    alert(email);
+                                    alert(password);
+                            
+                                    // Get the stored user data
+                                    const registeredEmail = localStorage.getItem("email");
+                                    const registeredPass = localStorage.getItem("password");
+                                    alert(registeredEmail);
+                                    alert(registeredPass);
+                            
+                                    // Check if the user exists and the password matches
+                                    if (registeredEmail === email && registeredPass === password) {
+                                        alert("Login successful");
+                                        // Redirect to home page or dashboard
                                     }
                                     else {
-                                        console.log("falha no loggin");
-                                        
+                                        alert("Login failed");
+                                        // Display an error message to the user
                                     }
-                                    
                                 }
-                        
                             </script>
+                            
                         </div>
                     </div>
                 </div>
