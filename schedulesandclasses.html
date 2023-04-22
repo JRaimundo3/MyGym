@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="assets/css/slick.css">
 	<link rel="stylesheet" href="assets/css/nice-select.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -55,7 +56,6 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
                                             <li><a href="services.html">Services</a></li>
                                             <li><a href="schedule.html">schedule</a></li>
                                             <li><a href="gallery.html">gallery</a></li>
@@ -68,6 +68,7 @@
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                     <a href="login.html" class="btn header-btn">login</a>
+                                </div>
                                 </div>
                             </div>
                         </div>   
@@ -89,7 +90,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap hero-cap2 text-center pt-70">
-                                <h2>Welcome Back</h2>
+                                <h2>Schedule a class </h2>
                             </div>
                         </div>
                     </div>
@@ -97,84 +98,67 @@
             </div>
         </div>
         <!-- Hero End -->
-        <!--? Login form Start -->
-        <div class="contact-form-main mt-100 mb-100">
+        <!--? Date Tabs Start -->
+        <section class="date-tabs section-padding30">
             <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-xl-7 col-lg-7">
-                        <div class="form-wrapper">
-                            <!--Section Tittle  -->
-                            <div class="form-tittle">
-                                <div class="row ">
-                                    <div class="col-lg-11 col-md-10 col-sm-10">
-                                        <div class="section-tittle">
-                                            <span>Login form</span>
-                                            <h2>Feel Free to contact with us!</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Section Tittle  -->
-                            <form id="contact-form">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-box subject-icon mb-30">
-                                            <input type="Email" name="email" id = "email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-box subject-icon mb-30">
-                                            <input type="password" name="password" id = "password" placeholder="Password">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="submit-info">
-                                            <input type="button" value="Save" onclick="Login()" >
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <script>
-
-                                function Login(){
-                                    
-                                    // Get references to the form elements
-                                    const emailInput = document.getElementById('email');
-                                    const passwordInput = document.getElementById('password');
-                                    console.log(emailInput);
-                                    console.log(passwordInput);
-                                    const user = localStorage.getItem(emailInput);
-                                    const pass = localStorage.getItem(passwordInput);
-                                    
-                                // Get the form data
-                                    const email = emailInput.value;
-                                    const password = passwordInput.value;
-                                
-                                
-                                
-                                    if (password != pass) {
-                                            console.log("Já existe esse email");
-                                            console.log("sucesso");
-                                            window.location.href = 'schedulesandclasses.html';
-                                    }
-                                    else {
-                                        console.log("falha no loggin");
-                                        
-                                    }
-                                    
-                                }
+                <!-- Heading & Nav Button -->
+                <div class="row justify-content-center mb-10">
+                    <div class="col-lg-11">
+                        <div class="properties__button">
+                            <!--Nav Button  -->                                                 
                         
-                            </script>
+                            <!--End Nav Button  -->
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- contact left Img-->
-            <div class="from-left d-none d-lg-block">
-                <img src="assets/img/gallery/contact_form.png" alt="" style="max-height: 500px;">
-            </div>
-        </div>
-        <!-- Login form End -->
+                <!-- Tab content -->
+
+                
+
+
+                <form action="/action_page.php">
+                    <label class= "form-label" for="days">Choose a day:</label>
+
+              
+                    
+                      <div class="form-group">
+                        <label for="date">Date</label> <input id="date" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Starting time:</label > <br>
+                            <input type="time" id="startingtime" name="startingtime"><br>
+                          
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Ending time:</label> <br>
+                        <input type="time" id="endingtime" name="endingtime"><br>
+                        
+                    </div>
+                    <div class="form-group">
+                    <label for="classes">Choose a class:</label> <br>
+                    <input type="text" id="classetype" name="classetype"><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="classes">Choose a professor:</label> <br>
+                        <input type="text" id="classetutor" name="classetutor"><br>
+    
+                        </div>
+                      <br>
+                      <br>
+                      <br>
+
+
+                    <input type="submit" value="Submit" class="btn header-btn">
+                
+                    </form>
+
+                    
+
+
+                    
+                    
+        </section>
+        <!-- Date Tabs End -->
     </main>
     <footer>
         <!--? Footer Start-->
@@ -296,7 +280,6 @@
 
     <!-- contact js -->
     <script src="./assets/js/contact.js"></script>
-    <script src="./assets/js/jquery.form.js"></script>
     <script src="./assets/js/jquery.validate.min.js"></script>
     <script src="./assets/js/mail-script.js"></script>
     <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
