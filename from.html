@@ -121,7 +121,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-box user-icon mb-30">
-                                            <input type="text" name="name" placeholder="Name">
+                                            <input id="name" type="text" name="name" placeholder="Name*" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
@@ -143,12 +143,12 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-box subject-icon mb-30">
-                                            <input type="Email" name="email" id="email" placeholder="Email">
+                                            <input type="Email" name="email" id="email" placeholder="Email*" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-box subject-icon mb-30">
-                                            <input type="password" name="password" id="password" placeholder="Password">
+                                            <input type="password" name="password" id="password" placeholder="Password*" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -160,30 +160,70 @@
                                         </div>
                                     </div>
                                     <script>
-                                         document.getElementById("register-btn").addEventListener("click", register);
-                                        function register() {
-
+                                        document.getElementById("register-btn").addEventListener("click", register);
+                                        function register(e) {
+                                            e.preventDefault();
+                                    
                                             // Get references to the form elements
+                                            const nameInput = document.getElementById('name');
                                             const emailInput = document.getElementById('email');
                                             const passwordInput = document.getElementById('password');
+                                    
+                                            // Check if all required fields are filled in
+                                            if (!nameInput.value || !emailInput.value || !passwordInput.value) {
+                                                return;
+                                            }
+                                    
                                             const registeredUser = localStorage.getItem("email");
-
+                                    
                                             // Get the form data
                                             const email = emailInput.value;
                                             const password = passwordInput.value;
-
-                                            if (registeredUser != null) {
-                                                alert("Email já cadastrado.");
+                                    
+                                            if (registeredUser === email) {
+                                                $('#errorModal').modal('show');
                                             } else {
+                                                $('#successModal').modal('show');
                                                 localStorage.setItem("email", email);
                                                 localStorage.setItem("password", password);
-                                                alert("Usuário cadastrado com sucesso.");
-                                                window.location.href = 'login.html';
                                             }
-                                        }                            
+                                        }
                                     </script>
                                 </div>
                             </form>
+                            <!-- Pop-up de sucesso -->
+                            <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="successModalLabel">Registro efetuado com sucesso!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p>Seu registro foi efetuado com sucesso. Você será redirecionado para a página de login.</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Pop-up de erro -->
+                            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="errorModalLabel">Erro no registro!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p>O email inserido já está cadastrado. Por favor, tente novamente com outro email.</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>  
                         </div>
                     </div>
                 </div>
