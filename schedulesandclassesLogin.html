@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,22 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/loder.png">
 
-	<!-- CSS here -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="assets/css/slicknav.css">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/gijgo.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/animated-headline.css">
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="assets/css/themify-icons.css">
-	<link rel="stylesheet" href="assets/css/slick.css">
-	<link rel="stylesheet" href="assets/css/nice-select.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/form.css">
 </head>
+
 <body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
@@ -66,16 +68,16 @@
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                     <a href="index.html" class="btn header-btn">logout</a>
                                 </div>
-                                </div>
                             </div>
-                        </div>   
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <!-- Header End -->
     </header>
@@ -102,84 +104,96 @@
                 <div class="row justify-content-center mb-10">
                     <div class="col-lg-11">
                         <div class="properties__button">
-                            <!--Nav Button  -->                                                 
-                        
+                            <!--Nav Button  -->
+
                             <!--End Nav Button  -->
                         </div>
                     </div>
                 </div>
                 <!-- Tab content -->
 
-                
+
 
 
                 <form action="/action_page.php">
-                    <label class= "form-label" for="days">Choose a day:</label>
+                    <label class="form-label" for="days">Choose a day:</label>
 
-              
-                    
-                      <div class="form-group">
-                        <label for="date">Date</label> <input id="date" type="date">
+
+
+                    <div class="form-group">
+                        <div class="col-lg-6 col-md-6 mb-30">
+                            <div class="select-itms">
+                                <select name="weekDays" id="select2">
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="time">Starting time:</label > <br>
-                            <input type="time" id="startingtime" name="startingtime"><br>
-                          
+                        <label for="time">Starting time:</label> <br>
+                        <input type="time" id="startingtime" name="startingtime"><br>
+
                     </div>
                     <div class="form-group">
                         <label for="time">Ending time:</label> <br>
                         <input type="time" id="endingtime" name="endingtime"><br>
-                        
+
                     </div>
                     <div class="form-group">
-                    <label for="classes">Choose a class:</label> <br>
-                    <input type="text" id="classetype" name="classetype"><br>
+                        <label for="classes">Choose a class:</label> <br>
+                        <input type="text" id="classetype" name="classetype"><br>
                     </div>
                     <div class="form-group">
                         <label for="classes">Choose a professor:</label> <br>
                         <input type="text" id="classetutor" name="classetutor"><br>
-    
-                        </div>
-                      <br>
-                      <br>
-                      <br>
+
+                    </div>
+                    <br>
+                    <br>
+                    <br>
 
 
                     <input type="submit" value="Submit" class="btn header-btn">
-                
-                    </form>
-                    <script>
-                        // Ouvinte de eventos para o formulário
-                        document.querySelector('form').addEventListener('submit', (event) => {
-                            event.preventDefault();
 
-                            // Cria um objeto com as informações da aula
-                            const newClass = {
-                                date: document.querySelector('#date').value,
-                                startingTime: document.querySelector('#startingtime').value,
-                                endingTime: document.querySelector('#endingtime').value,
-                                classType: document.querySelector('#classetype').value,
-                                classTutor: document.querySelector('#classetutor').value
-                            };
+                </form>
+                <script>
+                    // Ouvinte de eventos para o formulário
+                    document.querySelector('form').addEventListener('submit', (event) => {
+                        event.preventDefault();
 
-                            // Obtém o array de aulas armazenado no localStorage
-                            const classes = JSON.parse(localStorage.getItem('classes')) || [];
+                        // Cria um objeto com as informações da aula
+                        const newClass = {
+                            weekday: document.querySelector('#select2').value,
+                            startingTime: document.querySelector('#startingtime').value,
+                            endingTime: document.querySelector('#endingtime').value,
+                            classType: document.querySelector('#classetype').value,
+                            classTutor: document.querySelector('#classetutor').value
+                        };
 
-                            // Adiciona a nova aula ao array
-                            classes.push(newClass);
+                        // Obtém o array de aulas armazenado no localStorage
+                        const classes = JSON.parse(localStorage.getItem('classes')) || [];
 
-                            // Armazena o array atualizado no localStorage
-                            localStorage.setItem('classes', JSON.stringify(classes));
+                        // Adiciona a nova aula ao array
+                        classes.push(newClass);
 
-                            // Limpa o formulário
-                            document.querySelector('form').reset();
-                        });
-                    </script>
-                    
+                        // Armazena o array atualizado no localStorage
+                        localStorage.setItem('classes', JSON.stringify(classes));
+
+                        // Limpa o formulário
+                        document.querySelector('form').reset();
+                    });
+                </script>
 
 
-                    
-                    
+
+
+
         </section>
         <!-- Date Tabs End -->
     </main>
@@ -267,7 +281,7 @@
         <!-- Footer End-->
     </footer>
     <!-- Scroll Up -->
-    <div id="back-top" >
+    <div id="back-top">
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
 
@@ -294,7 +308,7 @@
     <!-- Nice-select, sticky -->
     <script src="./assets/js/jquery.nice-select.min.js"></script>
     <script src="./assets/js/jquery.sticky.js"></script>
-    
+
     <!-- counter , waypoint -->
     <script src="./assets/js/jquery.counterup.min.js"></script>
     <script src="./assets/js/waypoints.min.js"></script>
@@ -306,10 +320,11 @@
     <script src="./assets/js/jquery.validate.min.js"></script>
     <script src="./assets/js/mail-script.js"></script>
     <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
-    
-    <!-- Jquery Plugins, main Jquery -->	
+
+    <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
-    
-    </body>
+
+</body>
+
 </html>
