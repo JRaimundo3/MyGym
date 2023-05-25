@@ -105,35 +105,112 @@
             <div class="container">
                 <!-- Heading & Nav Button -->
                 <div class="row justify-content-center mb-10">
-                    <div class="col-lg-11">
-                    <h2>Dados do Utilizador</h2>
-                    <p><strong>Nome:</strong> <span id="user-name"></span></p>
-                    <p><strong>Email:</strong> <span id="user-email"></span></p>
-                    <p><strong>Password:</strong> <span id="user-password"></span></p>
-                    <p><strong>Telefone:</strong> <span id="user-phone"></span></p>
+                        <div class="col-lg-11">
+                        <div class="section-tittle section-tittle3 mb-35">
+                            <h2>User data</h2>
+                        </div>
+                        <p>
+                            <strong>Name:</strong> 
+                            <input id="user-name" type="text">
+                        </p>
+                        
+                        <!-- Email -->
+                        <p>
+                            <strong>Email:</strong> 
+                            <input id="user-email" type="email">
+                        </p>
+                        
+                        <!-- Password -->
+                        <p>
+                            <strong>Password:</strong> 
+                            <input type="password" id="user-password" name="password" required>
+                            <input type="checkbox" id="show-password"> Show password
+                        </p>
+                        
+                        <!-- Telefone -->
+                        <p>
+                            <strong>Phone:</strong> 
+                            <input id="user-phone" type="tel">
+                        </p>
+                        
+                        <!-- Botão para submeter as alterações -->
+                        <div class="submit-info">
+                            <button class="btn" type="submit" id="submit-btn">Confirm Changes</button>
+                        </div>
+                        
                     </div>
                 </div>
                 <!-- Tab content -->
+                <!-- Pop-up de sucesso -->
+                <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">SUCCESS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        <p>Profile successfully updated!</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
 
 
 
                 <script>
+                    document.getElementById('show-password').addEventListener('change', (event) => {
+                        const passwordInput = document.getElementById('user-password');
+
+                        if (event.target.checked) {
+                            // Mostra a senha
+                            passwordInput.type = 'text';
+                        } else {
+                            // Esconde a senha
+                            passwordInput.type = 'password';
+                        }
+                    });
+
                     // Obtém o email do utilizador logado
                     const loggedUserEmail = localStorage.getItem("loggedUser");
-            
+
                     // Obtém o array de utilizadores registados
-                    const registeredUsers = JSON.parse(localStorage.getItem("users"));
-            
+                    let registeredUsers = JSON.parse(localStorage.getItem("users"));
+
                     // Encontra o utilizador logado no array
-                    const loggedUser = registeredUsers.find(user => user.email === loggedUserEmail);
-            
+                    let loggedUser = registeredUsers.find(user => user.email === loggedUserEmail);
+
                     if (loggedUser) {
-                        // Preenche os dados do utilizador nos elementos HTML
-                        document.getElementById('user-name').textContent = loggedUser.name;
-                        document.getElementById('user-email').textContent = loggedUser.email;
-                        document.getElementById('user-password').textContent = loggedUser.password;
-                        document.getElementById('user-phone').textContent = loggedUser.phone;
+                        // Preenche os formulários com os dados do utilizador
+                        document.getElementById('user-name').value = loggedUser.name;
+                        document.getElementById('user-email').value = loggedUser.email;
+                        document.getElementById('user-password').value = loggedUser.password;
+                        document.getElementById('user-phone').value = loggedUser.phone;
                     }
+
+                    // Ouvinte de eventos para o botão
+                    document.getElementById('submit-btn').addEventListener('click', () => {
+                        // Atualiza os dados do utilizador
+                        loggedUser.name = document.getElementById('user-name').value;
+                        loggedUser.email = document.getElementById('user-email').value;
+                        loggedUser.password = document.getElementById('user-password').value;
+                        loggedUser.phone = document.getElementById('user-phone').value;
+
+                        // Atualiza o array de utilizadores
+                        registeredUsers = registeredUsers.map(user =>
+                            user.email === loggedUserEmail ? loggedUser : user
+                        );
+
+                        // Salva as alterações no localStorage
+                        localStorage.setItem("users", JSON.stringify(registeredUsers));
+                        localStorage.setItem("loggedUser", loggedUser.email); // No caso de o email ter sido alterado
+
+                        // Mostra uma mensagem de sucesso (altere isso conforme necessário)
+                        $('#successModal').modal('show');
+                    });
+
                 </script>
 
         </section>
