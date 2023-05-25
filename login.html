@@ -151,24 +151,26 @@
                             </div> 
                             <script>
                                 document.getElementById("login-btn").addEventListener("click", login);
-                            
+
                                 function login(event) {
                                     event.preventDefault();
-                            
+
                                     // Get references to the form elements
                                     const emailInput = document.getElementById('email');
                                     const passwordInput = document.getElementById('password');
-                            
+
                                     // Get the form data
                                     const email = emailInput.value;
                                     const password = passwordInput.value;
-                            
-                                    // Get the stored user data
-                                    const registeredEmail = localStorage.getItem("email");
-                                    const registeredPass = localStorage.getItem("password");
-                            
+
+                                    // Get the array of registered users
+                                    const registeredUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+                                    // Find the user that is trying to log in
+                                    const loginUser = registeredUsers.find(user => user.email === email);
+
                                     // Check if the user exists and the password matches
-                                    if (registeredEmail === email && registeredPass === password) {
+                                    if (loginUser && loginUser.password === password) {
                                         // Redirect to home page or dashboard
                                         window.location.href = "indexLogin.html";
                                     } else {
@@ -176,6 +178,7 @@
                                         $('#errorModal').modal('show');
                                     }
                                 }
+
                             </script>
                             
                         </div>
