@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
 </head>
 
 <body>
@@ -47,7 +48,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="indexLogin.html"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -56,19 +57,19 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="services.html">Services</a></li>
-                                            <li><a href="schedule.html">schedule</a></li>
-                                            <li><a href="gallery.html">gallery</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="indexLogin.html">Home</a></li>
+                                            <li><a href="servicesLogin.html">Services</a></li>
+                                            <li><a href="scheduleLogin.html">schedule</a></li>
+                                            <li><a href="galleryLogin.html">gallery</a></li>
+                                            <li><a href="contactLogin.html">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="from.html" class="btn header-btn">registration</a>
+                                    <a href="profile.html" class="btn header-btn">Profile</a>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="login.html" class="btn header-btn">login</a>
+                                    <a href="index.html" class="btn header-btn">logout</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +92,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap hero-cap2 text-center pt-70">
-                                <h2>New Members</h2>
+                                <h2>Profile Information </h2>
                             </div>
                         </div>
                     </div>
@@ -99,153 +100,44 @@
             </div>
         </div>
         <!-- Hero End -->
-        <!--? Registration form Start -->
-        <div class="contact-form-main mt-100 mb-100">
+        <!--? Date Tabs Start -->
+        <section class="date-tabs section-padding30">
             <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-xl-7 col-lg-7">
-                        <div class="form-wrapper">
-                            <!--Section Tittle  -->
-                            <div class="form-tittle">
-                                <div class="row ">
-                                    <div class="col-lg-11 col-md-10 col-sm-10">
-                                        <div class="section-tittle">
-                                            <span>Registration form</span>
-                                            <h2>Feel Free to contact with us!</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Section Tittle  -->
-                            <form id="contact-form">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-box user-icon mb-30">
-                                            <input id="name" type="text" name="name" placeholder="Name*" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-box email-icon mb-30">
-                                            <input id="phone" type="text" name="phoneNumber" placeholder="Phone">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 mb-30">
-                                        <div class="select-itms">
-                                            <select name="gym" id="select2">
-                                                <option value="">Gym</option>
-                                                <option value="">Boxing</option>
-                                                <option value="">saiful islam</option>
-                                                <option value="">Arafath Miya</option>
-                                                <option value="">Shakil Miya</option>
-                                                <option value="">Tamim Sharker</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-box subject-icon mb-30">
-                                            <input type="Email" name="email" id="email" placeholder="Email*" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-box subject-icon mb-30">
-                                            <input type="password" name="password" id="password" placeholder="Password*" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-box message-icon mb-65">
-                                            <textarea name="message" id="message" placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="submit-info">
-                                            <button class="btn" type="submit" id="register-btn">Register</button>
-                                        </div>
-                                    </div>
-                                    <script>
-                                        document.getElementById("register-btn").addEventListener("click", register);
-                                        function register(e) {
-                                            e.preventDefault();
-
-                                            // Get references to the form elements
-                                            const nameInput = document.getElementById('name');
-                                            const emailInput = document.getElementById('email');
-                                            const passwordInput = document.getElementById('password');
-                                            const phoneInput = document.getElementById('phone');
-
-                                            // Check if all required fields are filled in
-                                            if (!nameInput.value || !emailInput.value || !passwordInput.value || !phoneInput.value) {
-                                                return;
-                                            }
-
-                                            // Get the form data
-                                            const name = nameInput.value;
-                                            const email = emailInput.value;
-                                            const password = passwordInput.value;
-                                            const phone = phoneInput.value;
-
-                                            // Get the array of registered users
-                                            const registeredUsers = JSON.parse(localStorage.getItem("users")) || [];
-
-                                            // Check if the user is already registered
-                                            const existingUser = registeredUsers.find(user => user.email === email);
-
-                                            if (existingUser) {
-                                                $('#errorModal').modal('show');
-                                            } else {
-                                                // Add the new user to the array
-                                                registeredUsers.push({ name: name, email: email, password: password, phone: phone });
-
-                                                // Save the updated array to localStorage
-                                                localStorage.setItem("users", JSON.stringify(registeredUsers));
-
-                                                $('#successModal').modal('show');
-                                            }
-                                        }
-
-                                    </script>
-                                </div>
-                            </form>
-                            <!-- Pop-up de sucesso -->
-                            <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="successModalLabel">SUCESSO</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <p>Seu registro foi efetuado com sucesso!</p>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Pop-up de erro -->
-                            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="errorModalLabel">ERRO</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <p>O email inserido já está cadastrado. Por favor, tente novamente com outro email.</p>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>  
-                        </div>
+                <!-- Heading & Nav Button -->
+                <div class="row justify-content-center mb-10">
+                    <div class="col-lg-11">
+                    <h2>Dados do Utilizador</h2>
+                    <p><strong>Nome:</strong> <span id="user-name"></span></p>
+                    <p><strong>Email:</strong> <span id="user-email"></span></p>
+                    <p><strong>Password:</strong> <span id="user-password"></span></p>
+                    <p><strong>Telefone:</strong> <span id="user-phone"></span></p>
                     </div>
                 </div>
-            </div>
-            <!-- contact left Img-->
-            <div class="from-left d-none d-lg-block">
-                <img src="assets/img/gallery/contact_form.png" alt="">
-            </div>
-        </div>
-        <!-- Registration form End -->
+                <!-- Tab content -->
+
+
+
+                <script>
+                    // Obtém o email do utilizador logado
+                    const loggedUserEmail = localStorage.getItem("loggedUser");
+            
+                    // Obtém o array de utilizadores registados
+                    const registeredUsers = JSON.parse(localStorage.getItem("users"));
+            
+                    // Encontra o utilizador logado no array
+                    const loggedUser = registeredUsers.find(user => user.email === loggedUserEmail);
+            
+                    if (loggedUser) {
+                        // Preenche os dados do utilizador nos elementos HTML
+                        document.getElementById('user-name').textContent = loggedUser.name;
+                        document.getElementById('user-email').textContent = loggedUser.email;
+                        document.getElementById('user-password').textContent = loggedUser.password;
+                        document.getElementById('user-phone').textContent = loggedUser.phone;
+                    }
+                </script>
+
+        </section>
+        <!-- Date Tabs End -->
     </main>
     <footer>
         <!--? Footer Start-->
@@ -298,7 +190,7 @@
                             <div class="single-footer-caption mb-50">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                    <a href="indexLogin.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -367,7 +259,6 @@
 
     <!-- contact js -->
     <script src="./assets/js/contact.js"></script>
-    <script src="./assets/js/jquery.form.js"></script>
     <script src="./assets/js/jquery.validate.min.js"></script>
     <script src="./assets/js/mail-script.js"></script>
     <script src="./assets/js/jquery.ajaxchimp.min.js"></script>

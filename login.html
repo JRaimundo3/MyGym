@@ -171,6 +171,9 @@
 
                                     // Check if the user exists and the password matches
                                     if (loginUser && loginUser.password === password) {
+                                        // Store the logged in user's email in localStorage
+                                        localStorage.setItem("loggedUser", email);
+
                                         // Redirect to home page or dashboard
                                         window.location.href = "indexLogin.html";
                                     } else {
