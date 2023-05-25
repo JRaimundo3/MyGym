@@ -163,31 +163,41 @@
                                         document.getElementById("register-btn").addEventListener("click", register);
                                         function register(e) {
                                             e.preventDefault();
-                                    
+
                                             // Get references to the form elements
                                             const nameInput = document.getElementById('name');
                                             const emailInput = document.getElementById('email');
                                             const passwordInput = document.getElementById('password');
-                                    
+
                                             // Check if all required fields are filled in
                                             if (!nameInput.value || !emailInput.value || !passwordInput.value) {
                                                 return;
                                             }
-                                    
-                                            const registeredUser = localStorage.getItem("email");
-                                    
+
                                             // Get the form data
+                                            const name = nameInput.value;
                                             const email = emailInput.value;
                                             const password = passwordInput.value;
-                                    
-                                            if (registeredUser === email) {
+
+                                            // Get the array of registered users
+                                            const registeredUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+                                            // Check if the user is already registered
+                                            const existingUser = registeredUsers.find(user => user.email === email);
+
+                                            if (existingUser) {
                                                 $('#errorModal').modal('show');
                                             } else {
+                                                // Add the new user to the array
+                                                registeredUsers.push({ name: name, email: email, password: password });
+
+                                                // Save the updated array to localStorage
+                                                localStorage.setItem("users", JSON.stringify(registeredUsers));
+
                                                 $('#successModal').modal('show');
-                                                localStorage.setItem("email", email);
-                                                localStorage.setItem("password", password);
                                             }
                                         }
+
                                     </script>
                                 </div>
                             </form>
@@ -196,13 +206,13 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h5 class="modal-title" id="successModalLabel">Registro efetuado com sucesso!</h5>
+                                    <h5 class="modal-title" id="successModalLabel">SUCESSO</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     </div>
                                     <div class="modal-body">
-                                    <p>Seu registro foi efetuado com sucesso. Você será redirecionado para a página de login.</p>
+                                    <p>Seu registro foi efetuado com sucesso!</p>
                                     </div>
                                 </div>
                                 </div>
@@ -213,7 +223,7 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h5 class="modal-title" id="errorModalLabel">Erro no registro!</h5>
+                                    <h5 class="modal-title" id="errorModalLabel">ERRO</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
