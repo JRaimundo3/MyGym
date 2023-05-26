@@ -143,7 +143,7 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="classes">Choose a class:</label> <br>
+                        <label for="classes">Choose class name:</label> <br>
                         <input type="text" id="classetype" name="classetype"><br>
                     </div>
                     <br>
@@ -154,6 +154,21 @@
                     <input type="submit" value="Submit" class="btn header-btn">
 
                 </form>
+                <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">SUCCESS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        <p>Class has been booked successfully!</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 <script>
                     // Ouvinte de eventos para o formulário
                     document.querySelector('form').addEventListener('submit', (event) => {
@@ -164,8 +179,7 @@
                             weekday: document.querySelector('#select2').value,
                             startingTime: document.querySelector('#startingtime').value,
                             endingTime: document.querySelector('#endingtime').value,
-                            classType: document.querySelector('#classetype').value,
-                            classTutor: document.querySelector('#classetutor').value
+                            classType: document.querySelector('#classetype').value
                         };
 
                         // Obtém o array de aulas armazenado no localStorage
@@ -179,6 +193,7 @@
 
                         // Limpa o formulário
                         document.querySelector('form').reset();
+                        $('#successModal').modal('show');
                     });
                 </script>
 
