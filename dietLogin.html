@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <!-- Tab content -->
-                        <h2 class="mb-30">Health Calculators</h2>
+                        <h1 class="mb-30">Health Calculators</h1>
                         <form id="health-calc-form">
                             <div class="form-group">
                                 <label for="weight">Weight (in kg):</label> <br>
@@ -167,6 +167,67 @@
                         document.getElementById('result').innerText = `Your BMI is ${bmi} and your BMR is ${bmr.toFixed(2)} calories/day.`;
                     });
                     </script>
+                    <br>
+                    <br>
+                    <h1 class="mb-30">Diet Recommendation</h1>
+                    <form id="diet-recommendation-form">
+                        <div class="form-group">
+                            <div class="col-lg-6 col-md-6 mb-30">
+                                <div class="select-itms">
+                                    <label for="goal">Your Goal:</label> <br>
+                                    <select name="goal" id="goal">
+                                        <option value="lose-weight">Lose Weight</option>
+                                        <option value="gain-muscle">Gain Muscle</option>
+                                        <option value="stay-healthy">Stay Healthy</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6 col-md-6 mb-30">
+                                <div class="select-itms">
+                                    <label for="diet">Dietary Restrictions:</label> <br>
+                                    <select name="diet" id="diet">
+                                        <option value="none">None</option>
+                                        <option value="vegetarian">Vegetarian</option>
+                                        <option value="vegan">Vegan</option>
+                                        <option value="gluten-free">Gluten-Free</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Get Recommendation" class="btn header-btn">
+                    </form>
+                    <h1 id="diet-result" class="mt-30"></h1>
+
+                    <script>
+                        document.getElementById('diet-recommendation-form').addEventListener('submit', function(event) {
+                            event.preventDefault(); // Prevent form from submitting normally
+
+                            const goal = event.target.goal.value;
+                            const diet = event.target.diet.value;
+
+                            let recommendation;
+                            switch (goal) {
+                                case 'lose-weight':
+                                    recommendation = "Aim for a balanced diet low in sugars and high in fiber, along with regular exercise.";
+                                    break;
+                                case 'gain-muscle':
+                                    recommendation = "Include plenty of protein in your diet and participate in strength training exercises.";
+                                    break;
+                                case 'stay-healthy':
+                                    recommendation = "Focus on a balanced diet, including fruits, vegetables, lean proteins, and whole grains.";
+                                    break;
+                            }
+
+                            if (diet !== 'none') {
+                                recommendation += ` As you have chosen a ${diet} diet, make sure to include alternatives to ensure you get the nutrients you need.`;
+                            }
+
+                            // Display the results
+                            document.getElementById('diet-result').innerText = `Based on your goal, ${recommendation}`;
+                        });
+                        </script>                       
 
         </section>
         <!-- Date Tabs End -->
