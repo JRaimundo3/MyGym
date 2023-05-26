@@ -166,24 +166,19 @@
                                     const email = emailInput.value;
                                     const password = passwordInput.value;
 
-                                    // Get the array of registered users
-                                    const registeredUsers = JSON.parse(localStorage.getItem("users")) || [];
-
-                                    // Find the user that is trying to log in
-                                    const loginUser = registeredUsers.find(user => user.email === email);
-
-                                    // Check if the user exists and the password matches
-                                    if (loginUser && loginUser.password === password) {
+                                    // Check if the username and password match the expected values
+                                    if (email === 'testept' && password === '12345') {
                                         // Store the logged in user's email in localStorage
                                         localStorage.setItem("loggedUser", email);
 
                                         // Redirect to home page or dashboard
-                                        window.location.href = "indexLogin.html";
+                                        window.location.href = "schedulesandclassesLogin.html";
                                     } else {
                                         // Display an error message to the user
                                         $('#errorModal').modal('show');
                                     }
                                 }
+
 
                             </script>
                             
